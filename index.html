@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>冒泡排序</title>
+</head>
+<body>
+	<script>
+			var str=[1,10,90,4,67,23,45];
+			//冒泡排序
+			for(var i=0;i<str.length-1;i++){
+				for(var j=0;j<str.length-i-1;j++){
+					if(str[j]>str[j+1]){
+						var temp=str[j];
+						str[j]=str[j+1];
+						str[j+1]=temp;
+					}
+				}
+			}
+			console.log(str);
+			//快速排序
+			str=[1,10,90,4,67,23,45,90,40,50];
+			var j=0;
+			function quickSort(str){
+				if(str.length<=1){
+					return str;
+				}
+				var middleIndex=Math.floor(str.length/2);
+				var middle=str.splice(middleIndex,1);
+				var left=[];
+				var right=[];
+				for(var i=0;i<str.length;i++,j++){
+					if(str[i]<=middle){
+						left.push(str[i]);
+					}
+					else{
+						right.push(str[i]);
+					}
+				}
+				return quickSort(left).concat(middle,quickSort(right));
+			}
+			console.log(quickSort(str));
+			console.log(j);
+			
+			str=[1,10,90,4,67,23,45,90,40,50];
+			var k=0;
+			function quickSort1(str){
+				if(str.length<=1){
+					return str;
+				}
+				var middleIndex=0;
+				var middle=str.splice(middleIndex,1);
+				var left=[];
+				var right=[];
+				for(var i=0;i<str.length;i++,k++){
+					if(str[i]<=middle){
+						left.push(str[i]);
+					}
+					else{
+						right.push(str[i]);
+					}
+				}
+				return quickSort1(left).concat(middle,quickSort1(right));
+			}
+			console.log(quickSort1(str));
+			console.log(k);
+			//获取到数组中的最大值和最小值
+			console.log(Math.max.apply(null,str));
+			console.log(Math.min.apply(null,str));
+			str=[1,[2,3],[45,6],[99]];
+			//拼接成字符串
+			str=str.join(',');
+			console.log(str);
+			//把字符串分割成字符串数组
+			str=str.split(",");
+			console.log(str);
+			console.log(Math.max.apply(null,str));
+	</script>
+</body>
+</html>
